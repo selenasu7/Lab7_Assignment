@@ -25,3 +25,8 @@ def test_drop_removes_course():
     s.register("SET312", 3)
     s.drop("SET312")
     assert s.total_hours == 0
+
+def test_cannot_drop_unregistered_course():
+    s = Student("2023001")
+    with pytest.raises(RegistrationError):
+        s.drop("SET312")
